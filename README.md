@@ -1,83 +1,86 @@
-# Introduction-to-HuggingFace
+# Introduction to Hugging Face
 
-**Hugging Face Pipelines**
+This repository is a hands-on guide to exploring Hugging Face’s Transformers, Datasets, and Pipelines. It covers a wide range of NLP and Computer Vision tasks, starting from the basics of pipelines to working with datasets, tokenizers, and models.
 
-This repository is a hands-on introduction to Hugging Face’s transformers library using the high-level Pipeline API.
-It covers a variety of NLP and Computer Vision tasks with minimal code, making it beginner-friendly and practical for quick prototyping.
+**What is Hugging Face?**
 
-🌟 **What is Hugging Face?**
+Hugging Face provides an ecosystem of tools and libraries that make it easy to use state-of-the-art machine learning models. With the transformers library, you can access pretrained models for NLP, vision, and multimodal tasks, while the datasets library gives access to hundreds of ready-to-use datasets.
 
-Hugging Face is an open-source platform and community that provides state-of-the-art pre-trained models for Natural Language Processing (NLP), Computer Vision (CV), Speech, and more.
-
-The Transformers library allows you to:
-
-Use pre-trained models in just a few lines of code.
-
-Perform tasks like text classification, NER, summarization, QA, translation, text generation, vision tasks, etc.
-
-Fine-tune models on your own datasets.
-
-Integrate with tools like PyTorch, TensorFlow, and JAX.
-
-The Pipeline API is the simplest way to use these models:
-
-from transformers import pipeline  
-
-classifier = pipeline("sentiment-analysis")  
-result = classifier("I love Hugging Face!")  
-print(result)
-
-📚 Covered Tasks
-📝 Natural Language Processing (NLP)
+**Covered Topics*
+Natural Language Processing (NLP) with Pipelines
 
 Text Classification – Sentiment analysis, topic classification.
 
-Named Entity Recognition (NER) – Extract entities like names, dates, organizations.
+Named Entity Recognition (NER) – Extracting entities like names, dates, and locations.
 
-Summarization – Generate concise summaries of text.
+Summarization – Generating concise summaries from long texts.
 
-Question Answering – Answer questions from context passages.
+Question Answering – Extracting answers from context passages.
 
-Translation – Translate between languages.
+Translation – Translating text between languages.
 
-Text Generation – Generate coherent text sequences.
+Text Generation – Autoregressive text generation with GPT-style models.
 
-Fill-Masking – Predict missing words in a sentence.
+Fill-Mask – Predicting masked tokens in a sentence.
 
-Feature Extraction – Get embeddings for downstream ML tasks.
+Feature Extraction – Extracting hidden state embeddings from transformer models.
 
-🖼️ Computer Vision
+**Computer Vision with Pipelines**
 
-Image Classification – Recognize objects in images.
+Image Classification – Identifying objects in an image.
 
-Object Detection – Detect and localize objects.
+Object Detection – Detecting objects with bounding boxes.
 
-Image Segmentation – Pixel-wise segmentation of images.
+Image Segmentation – Pixel-level classification of images.
 
+**Datasets, Models, and Pipelines**
 
-🚀 How to Use
+This repo also explores Hugging Face’s Datasets and Transformers libraries to build workflows beyond just pipelines.
 
-Each notebook/script in this repo demonstrates a specific task using Hugging Face pipelines.
+🔹 XSum Dataset
 
-Example – Sentiment Analysis:
+The XSum (Extreme Summarization) dataset is designed for abstractive summarization tasks.
 
-from transformers import pipeline  
+It contains BBC news articles with single-sentence summaries.
 
-sentiment_pipeline = pipeline("sentiment-analysis")  
-print(sentiment_pipeline("This repo is awesome!"))
+Used here for experimenting with summarization pipelines.
 
+**AutoTokenizer**
 
+AutoTokenizer automatically loads the correct tokenizer for any given model.
 
-🎯 Goal
+Example:
 
-By the end of this repo, you’ll:
+from transformers import AutoTokenizer
+tokenizer = AutoTokenizer.from_pretrained("facebook/bart-large-xsum")
 
-Understand how to use Hugging Face Pipelines for multiple tasks.
+**AutoModel**
 
-Quickly apply pre-trained models without deep ML knowledge.
+AutoModel and its variants load pretrained models for different tasks.
 
-Have a starting point to fine-tune models for your own projects.
+Example:
 
-🤝 Contributions
+from transformers import AutoModelForSeq2SeqLM
+model = AutoModelForSeq2SeqLM.from_pretrained("facebook/bart-large-xsum")
 
-Feel free to fork, improve, and raise PRs!
+**Hugging Face Pipelines with XSum**
+
+End-to-end summarization with BART on XSum dataset:
+
+from transformers import pipeline
+summarizer = pipeline("summarization", model="facebook/bart-large-xsum")
+summarizer("The BBC reported new updates about...", max_length=50, min_length=10)
+
+**Key Learnings**
+
+How to use Hugging Face pipelines for quick experimentation.
+
+How to load and work with datasets like XSum.
+
+How to tokenize text using AutoTokenizer.
+
+How to load pretrained AutoModels for different tasks.
+
+How to run end-to-end workflows combining datasets, models, and pipelines.
+
+🔥 This repo serves as a starter guide for anyone who wants to dive into Hugging Face and explore the powerful tools it provides for NLP and Computer Vision.
