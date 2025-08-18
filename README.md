@@ -37,7 +37,7 @@ Image Segmentation – Pixel-level classification of images.
 
 This repo also explores Hugging Face’s Datasets and Transformers libraries to build workflows beyond just pipelines.
 
-🔹 XSum Dataset
+XSum Dataset
 
 The XSum (Extreme Summarization) dataset is designed for abstractive summarization tasks.
 
@@ -83,4 +83,4 @@ How to load pretrained AutoModels for different tasks.
 
 How to run end-to-end workflows combining datasets, models, and pipelines.
 
-🔥 This repo serves as a starter guide for anyone who wants to dive into Hugging Face and explore the powerful tools it provides for NLP and Computer Vision.
+This repo serves as a starter guide for anyone who wants to dive into Hugging Face and explore the powerful tools it provides for NLP and Computer Vision.
